@@ -15,6 +15,7 @@ configured applications:
 required fonts:
 
 * lucy tewi
+* Wuncon Siji (polybar icons)
 * probably would use terminus on a higher res display
 
 because you're worth it
