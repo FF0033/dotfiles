@@ -1,0 +1,95 @@
+!-------------------------------------------------------------------------------
+! Xft settings
+!-------------------------------------------------------------------------------
+
+Xft.dpi:                    96
+Xft.antialias:              false
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+
+!-------------------------------------------------------------------------------
+! URxvt settings
+! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
+! More info at:
+! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
+!-------------------------------------------------------------------------------
+
+URxvt.iso14755: false
+URxvt.iso14755_52: false
+URxvt*perl-lib: /home/f03/.urxvt-perl
+URxvt*perl-ext: unichr,matcher,-selection
+
+URxvt.depth:                32
+URxvt.geometry:             90x30
+URxvt.transparent:          false
+URxvt.fading:               0
+! URxvt.urgentOnBell:         true
+! URxvt.visualBell:           true
+URxvt.loginShell:           true
+URxvt.saveLines:            4095
+URxvt.internalBorder:       16
+URxvt.lineSpace:            0
+
+urxvt.saveLines: 50000
+
+! Fonts
+URxvt*font: -*-tewi-medium-*-*-*-*-*-*-*-*-*-*-*
+URxvt*boldFont: -*-tewi-medium-*-*-*-*-*-*-*-*-*-*-*
+! Fix font space
+URxvt*letterSpace: 0
+
+! Scrollbar
+URxvt.scrollStyle:          rxvt
+URxvt.scrollBar:            false
+
+! Perl extensions
+URxvt.perl-ext-common:      default,matcher
+URxvt.matcher.button:       1
+URxvt.urlLauncher:          firefox
+
+! Cursor
+URxvt.cursorBlink:          true
+URxvt.cursorColor:          #657b83
+URxvt.cursorUnderline:      false
+
+! Pointer
+URxvt.pointerBlank:         true
+
+! special
+*.foreground:   #88a1be
+*.background:   #0a0f14
+*.cursorColor:  #88a1be
+
+! black
+*.color0:       #0a0f14
+*.color8:       #d864ca
+
+! red
+*.color1:       #c33027
+*.color9:       #d26939
+
+! green
+*.color2:       #26a98b
+*.color10:      #65ef4c
+
+! yellow
+*.color3:       #edb54b
+*.color11:      #245361
+
+! blue
+*.color4:       #195465
+*.color12:      #c7e242
+
+! magenta
+*.color5:       #4e5165
+*.color13:      #888ba5
+
+! cyan
+*.color6:       #33859d
+*.color14:      #599caa
+
+! white
+*.color7:       #98d1ce
+*.color15:      #d3ebe9
+

@@ -1,0 +1,465 @@
+############
+## Colors ##
+############
+
+[colors]
+background = #0a0f14
+background-alt = #0a0f14
+foreground = #ffffff
+foreground-alt = #555555
+primary = #ff0033
+secondary = #ff0033
+alert = #bd2c40
+
+[global/wm]
+margin-top = 5
+
+margin-bottom = 5
+
+
+##################
+## Bar settings ##
+##################
+
+[bar/bot]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 24
+offset-x = 0
+offset-y = 0
+
+;background = ${xrdb:color1}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 0
+overline-color = #fff
+underline-size = 3
+underline-color = #00f
+
+border-bottom-size = 0
+border-bottom-color = #333
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 2
+
+
+###########
+## Fonts ##
+###########
+
+font-0 = "terminus:pixelsize=8:antialias=false"
+font-1 = FontAwesome:size=9;0
+
+
+######################
+## Modules position ##
+######################
+
+modules-left = i3 
+modules-center = xwindow
+modules-right = xbacklight xkeyboard temperature memory cpu wlan eth battery date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+########
+## i3 ##
+########
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+pin-workspaces = true
+
+margin-left = 2
+margin-right = 2
+
+
+format = <label-state> <label-mode>
+
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+label-mode-padding = 1
+
+label-focused = "%icon% %name%  "
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${xrdb:color0}
+label-focused-underline = ${xrdb:color1}
+label-focused-padding = 1
+
+label-unfocused = "%icon% %name%  "
+label-unfocused-padding = 1
+
+label-urgent-background = ${colors.background}
+label-urgent-padding = 1
+
+label-visible-background = ${colors.background}
+label-visible-padding = 1
+
+
+#############
+## XWindow ##
+#############
+
+[module/title]
+type = internal/xwindow
+
+format-background = #ff0
+format-foreground = #000
+format-padding = 4
+
+label = "%title%"
+label-maxlen = 50
+
+
+##############
+## Keyboard ##
+##############
+
+[module/xkeyboard]
+## type = internal/xkeyboard
+blacklist-0 = num lock
+label-layout = %{F#55}%{F-} %layout%
+label-layout-underline = ${colors.secondary}
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+mount-2 = /invalid/mountpoint
+
+label-mounted = %mountpoint%: %percentage_free%%
+
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+
+###############
+## Backlight ##
+################
+
+[module/xbacklight]
+## type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = │
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+
+#########
+## CPU ##
+#########
+
+[module/cpu]
+## type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #FFFFFF
+format-underline = 
+label = %percentage%%
+
+
+#########
+## RAM ##
+#########
+
+[module/memory]
+## type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #FFFFFF
+format-underline = 
+label = %percentage_used%%
+
+
+##############
+## Wireless ##
+##############
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = 
+format-disconnected-underline = 
+
+label-connected = "%essid%"
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signa############
+## Colors ##
+############
+
+[colors]
+background = #0a0f14
+background-alt = #0a0f14
+foreground = #ffffff
+foreground-alt = #555555
+primary = #ff0033
+secondary = #ff0033
+alert = #bd2c40
+
+[global/wm]
+margin-top = 5
+
+margin-bottom = 5
+
+
+##################
+## Bar settings ##
+##################
+
+[bar/bot]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 24
+offset-x = 0
+offset-y = 0
+
+;background = ${xrdb:color1}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 0
+overline-color = #fff
+underline-size = 3
+underline-color = #00f
+
+border-bottom-size = 0
+border-bottom-color = #333
+
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 2
+
+
+###########
+## Fonts ##
+###########
+
+font-0 = "terminus:pixelsize=8:antialias=false"
+font-1 = FontAwesome:size=9;0
+
+
+######################
+## Modules position ##
+######################
+
+modules-left = i3 
+modules-center = xwindow
+modules-right = xbacklight xkeyboard temperature memory cpu wlan eth battery date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+########
+## i3 ##
+########
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+pin-workspaces = true
+
+margin-left = 2
+margin-right = 2
+
+
+format = <label-state> <label-mode>
+
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+label-mode-padding = 1
+
+label-focused = "%icon% %name%  "
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${xrdb:color0}
+label-focused-underline = ${xrdb:color1}
+label-focused-padding = 1
+
+label-unfocused = "%icon% %name%  "
+label-unfocused-padding = 1
+
+label-urgent-background = ${colors.background}
+label-urgent-padding = 1
+
+label-visible-background = ${colors.background}
+label-visible-padding = 1
+
+
+#############
+## XWindow ##
+#############
+
+[module/title]
+type = internal/xwindow
+
+format-background = #ff0
+format-foreground = #000
+format-padding = 4
+
+label = "%title%"
+label-maxlen = 50
+
+
+##############
+## Keyboard ##
+##############
+
+[module/xkeyboard]
+## type = internal/xkeyboard
+blacklist-0 = num lock
+label-layout = %{F#55}%{F-} %layout%
+label-layout-underline = ${colors.secondary}
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+mount-2 = /invalid/mountpoint
+
+label-mounted = %mountpoint%: %percentage_free%%
+
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+
+###############
+## Backlight ##
+################
+
+[module/xbacklight]
+## type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = │
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+
+#########
+## CPU ##
+#########
+
+[module/cpu]
+## type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #FFFFFF
+format-underline = 
+label = %percentage%%
+
+
+#########
+## RAM ##
+#########
+
+[module/memory]
+## type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #FFFFFF
+format-underline = 
+label = %percentage_used%%
+
+
+##############
+## Wireless ##
+##############
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-underline = 
+format-disconnected-underline = 
+
+label-connected = "%essid%"
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signa

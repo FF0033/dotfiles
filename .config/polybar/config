@@ -1,0 +1,422 @@
+############
+## Colors ##
+############
+
+[colors]
+background = #0a0f14
+background-alt = #0a0f14
+foreground = #ffffff
+foreground-alt = #555555
+primary = #ff0033
+secondary = #ff0033
+alert = #ff0033
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+
+##################
+## Bar settings ##
+##################
+
+[bar/bot]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 21
+offset-x = 0
+offset-y = 0
+
+;background = ${xrdb:color1}
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 0
+overline-color = #fff
+underline-size = 3
+underline-color = #ff0033
+
+border-bottom-size = 0
+border-bottom-color = #333
+
+padding-left = 1
+padding-right = 1
+module-margin-left = 2
+module-margin-right = 2
+
+
+###########
+## Fonts ##
+###########
+
+font-0 = "lucy tewi;2"
+font-1 = "Wuncon Siji;2"
+
+
+######################
+## Modules position ##
+######################
+
+modules-left = i3 
+modules-center = xwindow
+modules-right = xbacklight xkeyboard temperature memory cpu wlan eth battery date powermenu
+
+tray-position = right
+tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+
+########
+## i3 ##
+########
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+pin-workspaces = true
+
+margin-left = 2
+margin-right = 2
+
+format = <label-state><label-mode>
+
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+label-mode-padding = 0
+
+label-focused = "%name%"
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${xrdb:color0}
+label-focused-underline = ${xrdb:color1}
+label-focused-padding = 2
+
+label-unfocused = "%name%"
+
+label-unfocused-padding = 2
+
+label-urgent-background = ${colors.background}
+label-urgent-padding = 2
+label-urgent-underline = ${xrdb:color4}
+
+label-visible-background = ${colors.background}
+label-visible-padding = 2
+
+
+#############
+## XWindow ##
+#############
+
+[module/title]
+type = internal/xwindow
+
+format-background = #ff0
+format-foreground = #000
+format-padding = 4
+
+label = "%title%"
+label-maxlen = 50
+
+
+##############
+## Keyboard ##
+##############
+
+[module/xkeyboard]
+#type = internal/xkeyboard
+blacklist-0 = num lock
+label-layout = %{F#55}%{F-} %layout%
+label-layout-underline = ${colors.secondary}
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+
+mount-0 = /
+mount-1 = /home
+mount-2 = /invalid/mountpoint
+
+label-mounted = %mountpoint%: %percentage_free%%
+
+label-unmounted = %mountpoint%: not mounted
+label-unmounted-foreground = ${colors.foreground-alt}
+
+
+###############
+## Backlight ##
+################
+
+[module/xbacklight]
+# type = internal/xbacklight
+
+format = <label> <bar>
+label = BL
+
+bar-width = 10
+bar-indicator = │
+bar-indicator-foreground = #ff
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = #9f78e1
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/backlight-acpi]
+inherit = module/xbacklight
+type = internal/backlight
+card = intel_backlight
+
+
+#########
+## CPU ##
+#########
+
+[module/cpu]
+ type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #FFFFFF
+format-underline = 
+label = %percentage%%
+
+
+#########
+## RAM ##
+#########
+
+[module/memory]
+ type = internal/memory
+interval = 2
+format-prefix = " "
+format-prefix-foreground = #ffffff
+format-underline = 
+label = %percentage_used%%
+
+
+##############
+## Wireless ##
+##############
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+; Available tags:
+#   <label-connected> (default)
+#   <ramp-signal>
+format-connected = <ramp-signal> <label-connected>
+
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
+
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <animation-packetloss>
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+; Default: %ifname% %local_ip%
+label-connected = %ifname%
+label-connected-foreground = #eefafafa
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+; Default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+
+; Available tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %linkspeed% [wired]
+; Default: (none)
+;label-packetloss = %essid%
+;label-packetloss-foreground = #eefafafa
+
+; Only applies if <ramp-signal> is used
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-5 = 
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+
+
+##########
+## Date ##
+##########
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =  %m-%d
+date-alt = " %m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = " "
+format-prefix-foreground = #FFFFFF
+#format-underline = ${xrdb:color1}
+
+label = "%time%"
+
+
+############
+## Volume ##
+############
+
+[module/volume]
+type = internal/volume
+master-mixer = Master
+
+format-volume = <label-volume> <bar-volume>
+label-volume = VOL
+label-volume-foreground = ${root.foreground}
+
+format-muted-prefix = 
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = 10
+bar-volume-foreground-0 = #55aa55
+bar-volume-foreground-1 = #55aa55
+bar-volume-foreground-2 = #55aa55
+bar-volume-foreground-3 = #55aa55
+bar-volume-foreground-4 = #55aa55
+bar-volume-foreground-5 = #f5a70a
+bar-volume-foreground-6 = #ff5555
+bar-volume-gradient = false
+bar-volume-indicator = │
+bar-volume-indicator-font = 2
+bar-volume-indicator-foreground = #ff
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+
+#############
+## Battery ##
+#############
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 99
+
+format-charging = <label-charging>
+#format-charging-underline = #000000
+
+format-discharging = <ramp-capacity> <label-discharging>
+#format-discharging-underline = #000000
+
+label-charging =  %percentage%%
+
+format-full-prefix = " "
+format-full-prefix-foreground = #FFFFFF
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-foreground = #FFFFFF
+
+
+##############
+## CPU Temp ##
+##############
+
+[module/temperature]
+ type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+
+format = <ramp> <label>
+format-underline = 
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${self.format-underline}
+
+label =  %temperature% 
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-foreground = ${colors.foreground-alt}
+
+
+################
+## Power menu ##
+################
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = "" 
+label-open-foreground = #ffffff
+label-close =  cancel
+label-close-foreground = ${colors.secondary}
+label-separator = |
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = Reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = Power off
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = Cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = Reboot
+menu-1-1-exec = sudo reboot
+
+menu-2-0 = Power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = Cancel
+menu-2-1-exec = menu-open-0
+
+; vim:ft=dosini
